@@ -10,7 +10,7 @@
 2. **Dynamic Visualization:** Leveraging powerful charting libraries, the dashboard represents event data using pie charts, bar graphs, histograms, and time series plots.
 3. **Event Filtering:** Users can filter events based on type, source, timestamp, or other custom criteria, ensuring only relevant data is visualized.
 
-### Dependencies**:**
+### Dependencies:
 
 - **Express** for the web server
 - **TypeScript** for static type checking
