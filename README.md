@@ -36,3 +36,30 @@
 4. **State Management in React**:
     - With real-time data updates, a robust state management solution becomes crucial. Consider using React's built-in Context API or adopt Redux if you anticipate complex state logic.
     - Ensure that updates to your state, especially those triggered by real-time data, don't cause unnecessary component re-renders. Tools like **`React.memo`** or **`useMemo`** hook can help.
+  
+### Directory Structure:
+
+/taskManager
+|-- /client
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- README.md
+|   |-- /node_modules
+|   |-- /public
+|   |-- /src
+|   |   |-- App.js
+|   |   |-- App.css
+|-- /server
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- tsconfig.json
+|   |-- /node_modules
+|   |-- /build
+|   |-- /src
+|   |   |-- server.ts
+|   |   |-- /data
+|   |   |   |-- mockData.json
+|   |   |-- /routes
+|   |   |   |-- api.js
+|   |   |-- /utils
+|   |   |   |-- eventService.ts
