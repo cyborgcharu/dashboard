@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.tableBackground {
+  background-color: #a5f54c;
+
+}
+
+.headerBackground {
+  background-color: #ceccd9;
+}
+
+.textColor {
+  color: #ffffff;
+}
+
+.rowBackground {
+  background-color: #ffffff;
+}
+
+body, button, input, table, td, th {
+  font-family: 'BC Falster Grotesk', sans-serif;
+}

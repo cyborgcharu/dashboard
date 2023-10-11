@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'BC Falster Grotesk';  /* Specify a name to be used later */
+    src: url('./fonts/BC-Falster-Grotesk-Complete/bc-falster-grotesk-regular.otf') format('truetype');  /* path relative to the CSS file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Montreal';  /* Specify a name to be used later */
+    src: url('./fonts/NeueMontreal-Full family v2.4/ttf/PPNeueMontreal-Regular.ttf') format('truetype');  /* path relative to the CSS file */
+    font-weight: normal;
+    font-style: normal;
+}
