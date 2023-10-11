@@ -16,8 +16,16 @@ app.use('/api', apiRoutes);
 
 // ROUTES
 app.get('/', (req: Request, res: Response) => {
-    res.send("Hello World!");
-
+    res.send(`
+    <p><strong>Ox :: Visibility </strong> is a frontend visibility application tailored for modern businesses and developers. It connects seamlessly to an API, ingests event data in real-time, and visualizes analytics on a dynamic dashboard. With Visibility, users gain valuable insights into event-driven architectures, helping them optimize applications, understand user behavior, and make data-driven decisions.</p>
+    
+    <p><strong>Key Features:</strong></p>
+    <ul>
+        <li><strong>Real-time Data Streaming:</strong> The application listens to the configured API constantly and ingests event data in real-time.</li>
+        <li><strong>Dynamic Visualization:</strong> Leveraging powerful charting libraries, the dashboard represents event data using pie charts, bar graphs, histograms, and time series plots.</li>
+        <li><strong>Event Filtering:</strong> Users can filter events based on type, source, timestamp, or other custom criteria, ensuring only relevant data is visualized.</li>
+    </ul>
+    `);
 });
 
 app.get('/api/data', (req: Request, res: Response) => {
@@ -32,19 +40,6 @@ app.get('/health', (req: Request, res: Response) => {
     });
 });
 
-app.get('/about', (req: Request, res: Response) => {
-    res.send(`
-    <p><strong>Overview:</strong> Evently Dashboard is a frontend visibility application tailored for modern businesses and developers. It connects seamlessly to an API, ingests event data in real-time, and visualizes analytics on a dynamic dashboard. With Evently Dashboard, users gain valuable insights into event-driven architectures, helping them optimize applications, understand user behavior, and make data-driven decisions.</p>
-    
-    <p><strong>Key Features:</strong></p>
-    <ul>
-        <li><strong>Real-time Data Streaming:</strong> The application listens to the configured API constantly and ingests event data in real-time.</li>
-        <li><strong>Dynamic Visualization:</strong> Leveraging powerful charting libraries, the dashboard represents event data using pie charts, bar graphs, histograms, and time series plots.</li>
-        <li><strong>Event Filtering:</strong> Users can filter events based on type, source, timestamp, or other custom criteria, ensuring only relevant data is visualized.</li>
-    </ul>
-    `);
-});
-
 // ERROR HANDLING
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);
@@ -53,7 +48,10 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // SERVER
 io.on('connection', (socket) => {
-    console.log('user connected');
+    console.log('Operator connected with ID:', socket.id);
+
+    io.emit('userStatus', { userId: socket.id, status: 'online', lastActive: new Date() });
+
 
     socket.on('message', (data) => {
         console.log(data);
@@ -62,7 +60,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        console.log('Operator disconnected with ID:', socket.id);
+        io.emit('userStatus', { userId: socket.id, status: 'offline', lastActive: new Date() });
     });
 });
 
