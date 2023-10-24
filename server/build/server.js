@@ -7,12 +7,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const socket_io_1 = require("socket.io");
 const http_1 = __importDefault(require("http"));
+const cors = require('cors');
 const apiRoutes = require('./routes/api');
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server);
 const PORT = process.env.PORT || 4000;
 // MIDDLEWARE
+app.use(cors());
 app.use(express_1.default.static('public'));
 app.use('/api', apiRoutes);
 // ROUTES

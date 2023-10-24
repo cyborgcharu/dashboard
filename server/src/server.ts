@@ -3,6 +3,7 @@ import express, {Request, Response, NextFunction} from 'express';
 import {Server} from 'socket.io';
 import http from 'http';
 
+const cors = require('cors');
 const apiRoutes = require('./routes/api');
 const app = express();
 const server = http.createServer(app)
@@ -10,9 +11,9 @@ const io = new Server(server);
 const PORT = process.env.PORT || 4000;
 
 // MIDDLEWARE
+app.use(cors());
 app.use(express.static('public'));
 app.use('/api', apiRoutes);
-
 
 // ROUTES
 app.get('/', (req: Request, res: Response) => {
